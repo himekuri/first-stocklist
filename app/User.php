@@ -36,4 +36,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    /**
+     * Categoryモデル,Shopモデル,Itemモデルとの関係を定義（このユーザが持つカテゴリー、買い出し先、商品）
+     */
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+    public function shops()
+    {
+        return $this->hasMany(Shop::class);
+    }
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }
