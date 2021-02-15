@@ -16,19 +16,20 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('image_url');
+            $table->string('image_url')->nullable();
+            $table->text('image_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('shop_id');
-            $table->unsignedTinyInteger('status');
-            $table->dateTime('status_updated_at');
-            $table->boolean('checked_item');
+            $table->unsignedTinyInteger('status')->default(0);
+            $table->dateTime('status_updated_at')->nullable();
+            $table->boolean('checked_item')->default(0);
             $table->timestamps();
             
             // 外部キー制約
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('shop_id')->references('id')->on('shops');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
         });
     }
 

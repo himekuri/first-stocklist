@@ -19,10 +19,11 @@
                     <tr>                        
                         {{-- カテゴリー名を押すと編集ページへ飛ぶ --}}
                         <td class="align-middle">{!! link_to_route('categories.edit', $category->name, ['category' => $category->id]) !!}</td>
+                        {{-- 買い出し先一覧と見た目を合わせる --}}
                         <td>　　　　</td>
                         <td>
                             {!! Form::model($category, ['route' => ['categories.destroy', $category->id], 'method' => 'delete']) !!}
-                                {!! Form::button('<i class="fas fas fa-trash-alt"></i>', ['class' => "btn", 'type' => 'submit']) !!}
+                                {!! Form::button('<i class="fas fa-trash-alt"></i>', ['class' => "btn", 'type' => 'submit']) !!}
                             {!! Form::close() !!}
                         </td>
                     </tr>

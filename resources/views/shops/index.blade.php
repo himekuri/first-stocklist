@@ -27,7 +27,7 @@
                         
                         <td>
                             {!! Form::model($shop, ['route' => ['shops.destroy', $shop->id], 'method' => 'delete']) !!}
-                                {!! Form::button('<i class="fas fas fa-trash-alt"></i>', ['class' => "btn", 'type' => 'submit']) !!}
+                                {!! Form::button('<i class="fas fa-trash-alt"></i>', ['class' => "btn", 'type' => 'submit']) !!}
                             {!! Form::close() !!}
                         </td>
                     </tr>

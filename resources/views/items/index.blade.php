@@ -10,10 +10,32 @@
     <div class="mb-3 text-right">
         <a href="/items/create" class="btn btn-primary"><i class="fas fa-plus"></i></a>
     </div>
-    
-    <div class="center jumbotron">
-        <div class="text-center">
-            <h1>商品一覧ダミー</h1>
+    {{-- 商品一覧を表示する --}}
+    @if (count($items)>0)
+        @foreach ($categories as $category)
+            <div class="bg-secondary text-white pl-2">{{$category->name}}</div>
+                <table class="table">
+                    <tbody>
+                        @foreach($category->items as $item)
+                            <tr> 
+                                <td><img src="{{ $item->image_url }}" alt="画像"></td>
+                                {{-- 買い出し先名を押すと編集ページへ飛ぶ --}}
+                                <td class="align-middle">{!! link_to_route('items.edit', $item->name, ['item' => $item->id]) !!}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>        
+                </table>
+        @endforeach
+    @else
+        <div class="center jumbotron">
+            <div class="text-center">                
+                <h3>さっそく商品を登録してみましょう！</h3>
+                <p>(例) トマト、割り箸</p>
+                <p class="text-danger">＜カテゴリー、買い出し先から先に登録してください＞</p>
+                {{-- 買い出し先登録ページへのリンク --}}                    
+                {!! link_to_route('items.create', '商品を新規作成', [], ['class' => 'btn btn-lg btn-primary']) !!}
+            </div>
         </div>
-    </div>
+    @endif
+    
 @endsection
