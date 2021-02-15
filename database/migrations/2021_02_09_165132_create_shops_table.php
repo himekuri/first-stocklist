@@ -17,7 +17,7 @@ class CreateShopsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedInteger('number');
-            $table->string('gmap_url');
+            $table->string('gmap_url')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             
