@@ -8,6 +8,7 @@
         </ol>
     </nav>
     <div class="mb-3 text-right">
+        <a href="/items/create" class="btn btn-primary"><i class="far fa-list-alt"></i></a>
         <a href="/items/create" class="btn btn-primary"><i class="fas fa-plus"></i></a>
     </div>
     {{-- 商品一覧を表示する --}}
@@ -21,6 +22,13 @@
                                 <td><img src="{{ $item->image_url }}" alt="画像"></td>
                                 {{-- 買い出し先名を押すと編集ページへ飛ぶ --}}
                                 <td class="align-middle">{!! link_to_route('items.edit', $item->name, ['item' => $item->id]) !!}</td>
+                                <td class="w-25 align-middle">
+                                    {!! Form::open(['method'=>'post','route'=>['check_status',$item->id]]) !!}
+                                        {!! Form::submit('買い出し',['name' => 'none','class'=>'btn btn-outline-danger btn-sm mb-1']) !!}
+                                        {!! Form::submit('要注意',['name' => 'few','class'=>'btn btn-outline-warning btn-sm mb-1']) !!}
+                                        {!! Form::submit('在庫あり',['name' => 'many','class'=>'btn btn-outline-success btn-sm mb-1']) !!}
+                                    {!! Form::close() !!}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>        

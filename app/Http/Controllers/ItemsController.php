@@ -24,16 +24,12 @@ class ItemsController extends Controller
         // 商品一覧を取得
         $items = $user->items()->orderBy('created_at', 'asc')->get();
         
-        //foreach($categories as $category){
-        //    $items[$category->id] = $category->items()->orderBy('created_at', 'asc')->get();
-        //}
         
         
         // 商品一覧ビューでそれを表示
         return view('items.index', [
             'items' => $items,
             'categories' => $categories,
-            //'items[$category->id]' =>$items[$category->id]
         ]);
         
     }

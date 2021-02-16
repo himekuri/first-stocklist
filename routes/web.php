@@ -20,6 +20,9 @@ Route::resource('items', 'ItemsController',['only' => ['index', 'create', 'edit'
 //GoogleMapを表示するルート
 Route::get('shops/{id}/gmap', 'ShopsController@gmap')->name('gmap');
 
+//在庫状況をチェックするルート
+Route::post('items/{id}', 'ItemStatusController@store')->name('check_status');
+
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
