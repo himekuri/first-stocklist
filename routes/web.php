@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'ItemsController@index');
-Route::resource('items', 'ItemsController');
+Route::resource('items', 'ItemsController',['only' => ['index', 'create', 'edit','update', 'store', 'destroy']]);
 Route::resource('categories', 'CategoriesController',['only' => ['index', 'create', 'edit','update', 'store', 'destroy']]);
 Route::resource('shops', 'ShopsController',['only' => ['index', 'create', 'edit', 'update','store', 'destroy']]);
 Route::resource('items', 'ItemsController',['only' => ['index', 'create', 'edit','update', 'store', 'destroy']]);
@@ -22,6 +22,10 @@ Route::get('shops/{id}/gmap', 'ShopsController@gmap')->name('gmap');
 
 //在庫状況をチェックするルート
 Route::post('items/{id}', 'ItemStatusController@store')->name('check_status');
+
+//買い出しリスト
+Route::get('lists', 'ListsController@index')->name('lists.index');
+Route::post('lists', 'ListsController@store')->name('lists.store');
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');

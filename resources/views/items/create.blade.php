@@ -31,7 +31,7 @@
                     <div class="form-group">
                         {!! Form::label('category_select', 'カテゴリー',['class' => 'd-block']) !!}
                         @foreach ($categories as $category)
-                        {{ Form::radio('category_id',$category->id , false) }}
+                        {!! Form::radio('category_id',$category->id , false) !!}
                         {!! Form::label('category_id', $category->name) !!}
                         @endforeach
                     </div>

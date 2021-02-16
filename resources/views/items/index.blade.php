@@ -8,7 +8,7 @@
         </ol>
     </nav>
     <div class="mb-3 text-right">
-        <a href="/items/create" class="btn btn-primary"><i class="far fa-list-alt"></i></a>
+        <a href="/lists" class="btn btn-primary"><i class="far fa-list-alt"></i></a>
         <a href="/items/create" class="btn btn-primary"><i class="fas fa-plus"></i></a>
     </div>
     {{-- 商品一覧を表示する --}}

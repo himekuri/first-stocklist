@@ -21,6 +21,7 @@ class ItemStatusController extends Controller
         } else {
             $item->status = 0;
         }
+        $item->save();
         return back();
     }
 }

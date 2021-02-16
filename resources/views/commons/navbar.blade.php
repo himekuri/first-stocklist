@@ -14,7 +14,7 @@
                     <li class="nav-item">{!! link_to_route('items.index', '商品一覧', [], ['class' => 'nav-link']) !!}</li>
                     <li class="nav-item">{!! link_to_route('categories.index', 'カテゴリー', [], ['class' => 'nav-link']) !!}</li>
                     <li class="nav-item">{!! link_to_route('shops.index', '買い出し先', [], ['class' => 'nav-link']) !!}</li>
-                    {{-- <li class="nav-item">{!! link_to_route('#', '買い出しリスト', [], ['class' => 'nav-link']) !!}</li> --}}
+                    <li class="nav-item">{!! link_to_route('lists.index', '買い出しリスト', [], ['class' => 'nav-link']) !!}</li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="dropdown-divider"></li>
