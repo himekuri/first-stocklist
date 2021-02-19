@@ -7,7 +7,8 @@
             <li class="breadcrumb-item active" aria-current="page">買い出しリスト</li>
         </ol>
     </nav>
-    <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://stocklist-himekuri.herokuapp.com/lists" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
+    <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://stocklist-himekuri.herokuapp.com/u/%242y%2410%24I9i1Woeq1SUpDIwI66R8sO229i2BqqA5sNmwjfF0pTyyyUZYVdG7S
+" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
     @if (count($items)>0)
         <form method="post" action="{{ route('lists.store') }}">
             @csrf

@@ -11,6 +11,8 @@
         <a href="/lists" class="btn btn-primary"><i class="far fa-list-alt"></i></a>
         <a href="/items/create" class="btn btn-primary"><i class="fas fa-plus"></i></a>
     </div>
+    {{ route('users.autoLogin', ['token' => \Auth::user()->secret_token]) }}
+    
     {{-- 商品一覧を表示する --}}
     @if (count($items)>0)
         @foreach ($categories as $category)
@@ -21,11 +23,17 @@
                             <tr> 
                                 <td><img src="{{ $item->image_url }}" alt="画像"></td>
                                 {{-- 買い出し先名を押すと編集ページへ飛ぶ --}}
-                                <td class="align-middle">{!! link_to_route('items.edit', $item->name, ['item' => $item->id]) !!}</td>
+                                <td class="align-middle text-left">
+                                    {!! link_to_route('items.edit', $item->name, ['item' => $item->id]) !!}
+                                </td>
                                 <td class="w-25 align-middle">
-                                    {!! Form::open(['method'=>'post','route'=>['check_status',$item->id]]) !!}
+                                    {!! Form::open(['method'=>'put','route'=>['items.status.update',$item->id,'buy']]) !!}
                                         {!! Form::submit('買い出し',['name' => 'none','class'=>'btn btn-outline-danger btn-sm mb-1']) !!}
+                                    {!! Form::close() !!}
+                                    {!! Form::open(['method'=>'put','route'=>['items.status.update',$item->id,'caution']]) !!}
                                         {!! Form::submit('要注意',['name' => 'few','class'=>'btn btn-outline-warning btn-sm mb-1']) !!}
+                                    {!! Form::close() !!}
+                                    {!! Form::open(['method'=>'put','route'=>['items.status.update',$item->id,'ok']]) !!}
                                         {!! Form::submit('在庫あり',['name' => 'many','class'=>'btn btn-outline-success btn-sm mb-1']) !!}
                                     {!! Form::close() !!}
                                 </td>

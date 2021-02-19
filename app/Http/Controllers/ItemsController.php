@@ -72,8 +72,8 @@ class ItemsController extends Controller
             //直前にアップロードされた画像のpublicIdを取得する。
             $publicId = Cloudder::getPublicId();
             $request->image_url = Cloudder::secureShow($publicId, [
-                'width'     => 70,
-                'height'    => 70
+                'width'     => 100,
+                'height'    => 100
             ]);
             $request->image_id = $publicId;
         }
@@ -139,8 +139,8 @@ class ItemsController extends Controller
             //直前にアップロードされた画像のpublicIdを取得する。
             $publicId = Cloudder::getPublicId();
             $request->image_url = Cloudder::secureShow($publicId, [
-                'width'     => 70,
-                'height'    => 70
+                'width'     => 100,
+                'height'    => 100
             ]);
             $request->image_id = $publicId;
         }

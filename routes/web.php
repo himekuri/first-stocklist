@@ -12,20 +12,6 @@
 */
 
 Route::get('/', 'ItemsController@index');
-Route::resource('items', 'ItemsController',['only' => ['index', 'create', 'edit','update', 'store', 'destroy']]);
-Route::resource('categories', 'CategoriesController',['only' => ['index', 'create', 'edit','update', 'store', 'destroy']]);
-Route::resource('shops', 'ShopsController',['only' => ['index', 'create', 'edit', 'update','store', 'destroy']]);
-Route::resource('items', 'ItemsController',['only' => ['index', 'create', 'edit','update', 'store', 'destroy']]);
-
-//GoogleMapを表示するルート
-Route::get('shops/{id}/gmap', 'ShopsController@gmap')->name('gmap');
-
-//在庫状況をチェックするルート
-Route::post('items/{id}', 'ItemStatusController@store')->name('check_status');
-
-//買い出しリスト
-Route::get('lists', 'ListsController@index')->name('lists.index');
-Route::post('lists', 'ListsController@store')->name('lists.store');
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
@@ -35,3 +21,22 @@ Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
+
+Route::get('u/{token}', 'UsersController@autoLogin')->name('users.autoLogin');;
+
+Route::group(['middleware' => ['auth']], function () {
+        Route::resource('items', 'ItemsController',['except' => ['show']]);
+        Route::resource('categories', 'CategoriesController',['except' => ['show']]);
+        Route::resource('shops', 'ShopsController',['except' => ['show']]);
+    });
+
+
+//GoogleMapを表示するルート
+Route::get('shops/{id}/gmap', 'ShopsController@gmap')->name('gmap');
+
+//在庫状況をチェックするルート
+Route::put('items/{id}/{status}', 'ItemStatusController@update')->name('items.status.update');
+
+//買い出しリスト
+Route::get('lists', 'ListsController@index')->name('lists.index');
+Route::post('lists', 'ListsController@store')->name('lists.store');
