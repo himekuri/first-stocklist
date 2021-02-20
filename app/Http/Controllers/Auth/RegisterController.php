@@ -64,11 +64,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $hash = Hash::make(uniqid('', true));
+        $base64UrlHash = rtrim(strtr(base64_encode($hash), '+/', '-_'), '='); 
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'secret_token' => Hash::make(uniqid('', true)),
+            'secret_token' => $base64UrlHash,
         ]);
     }
 }
