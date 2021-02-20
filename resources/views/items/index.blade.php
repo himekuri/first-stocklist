@@ -11,7 +11,6 @@
         <a href="/lists" class="btn btn-primary"><i class="far fa-list-alt"></i></a>
         <a href="/items/create" class="btn btn-primary"><i class="fas fa-plus"></i></a>
     </div>
-    {{ route('users.autoLogin', ['token' => \Auth::user()->secret_token]) }}
     
     {{-- 商品一覧を表示する --}}
     @if (count($items)>0)
