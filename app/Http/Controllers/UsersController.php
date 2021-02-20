@@ -19,7 +19,7 @@ class UsersController extends Controller
         \Auth::login($user);
         
         // FIXME: 買い出しリストに飛ばす
-        return redirect('/');
+        return redirect()->route('lists.index');
         
     }
     
