@@ -24,8 +24,6 @@ class ItemsController extends Controller
         // 商品一覧を取得
         $items = $user->items()->orderBy('created_at', 'asc')->get();
         
-        
-        
         // 商品一覧ビューでそれを表示
         return view('items.index', [
             'items' => $items,
@@ -173,5 +171,28 @@ class ItemsController extends Controller
         
         // 商品一覧へリダイレクトさせる
         return redirect()->route('items.index');
+    }
+    
+    public function serch(Request $request) 
+    {
+        $keyword_name = $request->name;
+        
+        // 認証済みユーザを取得
+        $user = \Auth::user();
+        // カテゴリー一覧を取得
+        $categories = $user->categories()->orderBy('number', 'asc')->get();
+      
+            
+        // 認証済みユーザを取得
+        $user = \Auth::user();
+        //キーワードから部分一致するアイテムを取得
+        $items = $user->items()->where('name','like', '%' .$keyword_name. '%')->orderBy('created_at', 'asc')->get();
+        
+        //検索結果一覧ビューを表示
+        return view('items.serch', [
+            'items' => $items,
+            'categories' => $categories,
+        ]);
+        
     }
 }

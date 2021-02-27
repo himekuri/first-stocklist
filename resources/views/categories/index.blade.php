@@ -2,13 +2,13 @@
 
 @section('content')
     
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" class="col-9 d-inline-block">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">商品一覧</a></li>
             <li class="breadcrumb-item active" aria-current="page">カテゴリー一覧</li>
         </ol>
     </nav>
-    <div class="mb-3 text-right">
+    <div class="mb-3 text-right d-inline-block">
         <a href="/categories/create" class="btn btn-primary"><i class="fas fa-plus"></i></a>
     </div>
     {{-- カテゴリー一覧を表示する --}}
