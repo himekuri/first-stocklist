@@ -1,5 +1,5 @@
-<header class="mb-4">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark nav.sticky-top">
+<header class="mb-4 sticky-top">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         {{-- トップページへのリンク --}}
         <a class="navbar-brand" href="/">Stocklist</a>
 
